@@ -1,0 +1,14 @@
+apply plugin: 'java'
+archivesBaseName = 'sender'
+version = '1.0-SNAPSHOT' 
+repositories {
+    maven { url "https://repo.spring.io/libs-release" }
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile  'org.springframework.boot:spring-boot-starter-amqp:1.2.0.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-security:1.2.0.RELEASE'
+    compile 'org.springframework.data:spring-data-commons:1.9.1.RELEASE'
+}
