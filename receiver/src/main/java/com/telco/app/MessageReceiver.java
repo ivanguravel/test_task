@@ -1,0 +1,16 @@
+package com.telco.app;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MessageReceiver {
+
+	@Autowired
+	private MessageHolder messageHolder;
+
+	public void receiveMsg(final String message) {
+		messageHolder.addMessage(message);
+	}
+}
+ 
