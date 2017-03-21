@@ -13,7 +13,7 @@ public class MessageBrokerController {
     private MessageHolder messageHolder;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getUrls() {
+    public String getContent() {
         return messageHolder.getMessages().toString();
     }
 }

@@ -15,7 +15,7 @@ import java.io.IOException;
 public class BridgeDataHandler implements DataHandler {
 
     @Value("${v_switch.start.query}")
-    private String bridgesNames;
+    private String startQuery;
     @Value("${v_switch.bridges.by.name}")
     private String bridgesInfoByName;
 
@@ -28,7 +28,7 @@ public class BridgeDataHandler implements DataHandler {
 
     @Override
     public void handle() {
-        String responseWithBridgeName = socketIO.writeAndGetResponse(bridgesNames);
+        String responseWithBridgeName = socketIO.writeAndGetResponse(startQuery);
         try {
             Bridge bridge = objectMapper.readValue(responseWithBridgeName, Bridge.class);
             bridge.getConfiguredBridges().forEach(bridgeName -> {
