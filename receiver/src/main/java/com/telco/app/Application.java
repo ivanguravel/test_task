@@ -1,6 +1,4 @@
-package com;
-
-import com.telco.app.MessageReceiver;
+package com.telco.app;
 
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;

@@ -1,7 +1,9 @@
 package com.concretepage.rabbitmq;
 
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import com.concretepage.rabbitmq.receivers.DataHandler;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -9,12 +11,12 @@ import org.springframework.stereotype.Component;
 public class Scheduler {
 
     @Autowired
-    private RabbitTemplate rabbitTemplate;
+    @Qualifier("bridgeDataHandler")
+    private DataHandler bridgeDataHandler;
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 10_000)
     public void sendMessage() {
-        System.out.println("Message has been sent");
-        rabbitTemplate.convertAndSend("test", "msg");
+        bridgeDataHandler.handle();
     }
 }
 
