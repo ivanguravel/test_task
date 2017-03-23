@@ -1,45 +1,50 @@
 package com.telco.app.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class BridgeDto {
-    private long id;
     private String name;
     private String uuid;
     private String dataPathId;
+    private String state;
 
-    public long getId() {
-        return id;
+    public BridgeDto() {
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
+    public BridgeDto(String name, String uuid, String dataPathId, String state) {
+        this.name = name;
+        this.uuid = uuid;
+        this.dataPathId = dataPathId;
+        this.state = state;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getUuid() {
-        return uuid;
-    }
-
     public void setUuid(String uuid) {
         this.uuid = uuid;
-    }
-
-    public String getDataPathId() {
-        return dataPathId;
     }
 
     public void setDataPathId(String dataPathId) {
         this.dataPathId = dataPathId;
     }
 
+    public void setState(String state) {
+        this.state = state;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public String getDataPathId() {
+        return dataPathId;
+    }
+
+    public String getState() {
+        return state;
+    }
 }

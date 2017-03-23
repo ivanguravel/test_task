@@ -1,25 +1,19 @@
 package com.telco.app.domain;
 
+import com.telco.app.utils.State;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bridges")
+@Table(name = "bridges_new")
 public class Bridge {
-    private long id;
     private String name;
     private String uuid;
     private String dataPathId;
+    private State state;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
+    @Column(name = "NAME", nullable = false)
     public String getName() {
         return name;
     }
@@ -42,5 +36,14 @@ public class Bridge {
 
     public void setDataPathId(String dataPathId) {
         this.dataPathId = dataPathId;
+    }
+
+    @Enumerated(EnumType.ORDINAL)
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 }

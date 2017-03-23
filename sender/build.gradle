@@ -19,13 +19,13 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com.concretepage.rabbitmq.Application'
+        attributes 'Main-Class': 'com.telco.app.Application'
     }
 }
 
 task fatJar(type: Jar) {
     manifest {
-        attributes 'Main-Class': 'com.concretepage.rabbitmq.Application'
+        attributes 'Main-Class': 'com.telco.app.Application'
     }
     baseName = project.name
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
