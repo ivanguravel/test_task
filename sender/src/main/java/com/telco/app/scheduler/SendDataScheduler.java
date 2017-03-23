@@ -1,6 +1,5 @@
 package com.telco.app.scheduler;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.telco.app.dto.BridgeDto;
 import com.telco.app.service.BridgeService;
 import com.telco.app.service.CustomObjectMapper;
@@ -9,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -22,7 +22,7 @@ public class SendDataScheduler {
     private CustomObjectMapper objectMapper;
 
     @Scheduled(fixedRate = 20_000)
-    public void updateData() throws JsonProcessingException {
+    public void updateData() throws IOException {
         List<BridgeDto> bridges = service.findAll();
         System.err.println("Message has been sent");
         rabbitTemplate.convertAndSend("test", objectMapper.writeValueAsString(bridges));

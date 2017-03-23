@@ -8,13 +8,19 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
 @PropertySource(value={"classpath:application.properties"})
+@ComponentScan({"com.telco.app.controller", "com.telco.app.service", "com.telco.app.receiver"})
+@EntityScan("com.telco.app.domain")
+@EnableJpaRepositories("com.telco.app.dao")
 public class Application {
 
 	private final static String QUEUE_NAME = "test";
