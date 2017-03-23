@@ -27,7 +27,7 @@ public class BridgeService {
             Bridge bridge = BridgeConverter.convert(dto);
             if (dao.exists(name)) {
                 Bridge fromDb = dao.findOne(name);
-                if (!bridge.equals(fromDb) || Objects.isNull(fromDb.getState())) {
+                if (!bridge.equals(fromDb)) {
                     bridge.setState(State.MODIFIED);
                     dao.save(bridge);
                 }
