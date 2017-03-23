@@ -1,4 +1,4 @@
-package com.concretepage.rabbitmq;
+package com.telco.app.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 @Component
-public class SocketIO {
+public class SocketService {
 
     @Value("${v_switch.host}")
     private String host;

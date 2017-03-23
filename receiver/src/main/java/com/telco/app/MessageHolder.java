@@ -15,7 +15,7 @@ public class MessageHolder {
         messages.put(message, false);
     }
 
-    Set<String> getMessages() {
+    public Set<String> getMessages() {
         return new TreeSet<>(messages.keySet());
     }
 }

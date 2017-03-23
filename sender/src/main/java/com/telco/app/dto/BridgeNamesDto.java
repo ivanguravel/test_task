@@ -1,4 +1,4 @@
-package com.concretepage.rabbitmq.dto;
+package com.telco.app.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Bridge {
+public class BridgeNamesDto {
     @JsonProperty("result")
     private List<String> configuredBridges;
 

@@ -1,5 +1,6 @@
-package com.telco.app;
+package com.telco.app.controller;
 
+import com.telco.app.MessageHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

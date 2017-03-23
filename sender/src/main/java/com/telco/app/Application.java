@@ -1,7 +1,5 @@
-package com.concretepage.rabbitmq;
+package com.telco.app;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -32,26 +30,19 @@ public class Application {
 	}
 
 	@Bean
-	Binding binding(Queue queue, TopicExchange exchange) {
+	Binding binding(final Queue queue, final TopicExchange exchange) {
 		return BindingBuilder.bind(queue).to(exchange).with(QUEUE_NAME);
 	}
 
 	@Bean
-	SimpleMessageListenerContainer container(ConnectionFactory connectionFactory) {
+	SimpleMessageListenerContainer container(final ConnectionFactory connectionFactory) {
 		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
 		container.setConnectionFactory(connectionFactory);
 		container.setQueueNames(QUEUE_NAME);
 		return container;
 	}
 
-	@Bean
-	ObjectMapper objectMapper() {
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		return objectMapper;
-	}
-
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(final String[] args) throws InterruptedException {
 		SpringApplication.run(Application.class);
 	}
 }
