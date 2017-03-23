@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/bridges")
-public class MessageBrokerController {
+public class BridgeController {
 
     @Autowired
     private BridgeService service;

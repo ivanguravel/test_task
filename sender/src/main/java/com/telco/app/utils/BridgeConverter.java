@@ -16,7 +16,8 @@ public class BridgeConverter {
     }
 
     public static BridgeDto convert(final Bridge bridge) {
-        return new BridgeDto(bridge.getName(), bridge.getUuid(), bridge.getDataPathId(), bridge.getState().name());
+        return new BridgeDto(bridge.getName(), bridge.getUuid(),
+                bridge.getDataPathId(), bridge.getState().name());
     }
 
     private BridgeConverter() {

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,11 +26,15 @@ public class BridgeService {
             String name = dto.getName();
             Bridge bridge = BridgeConverter.convert(dto);
             if (dao.exists(name)) {
-                bridge.setState(State.MODIFIED);
+                Bridge fromDb = dao.findOne(name);
+                if (!bridge.equals(fromDb) || Objects.isNull(fromDb.getState())) {
+                    bridge.setState(State.MODIFIED);
+                    dao.save(bridge);
+                }
             } else {
                 bridge.setState(State.NEW);
+                dao.save(bridge);
             }
-            dao.save(bridge);
         }
 
         // Mark as removed.
